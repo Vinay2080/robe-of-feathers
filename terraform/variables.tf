@@ -26,3 +26,9 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+variable "workers_subdomain" {
+  description = "Cloudflare account workers.dev subdomain prefix"
+  type        = string
+  default     = "co-2023-vspatil"
+}

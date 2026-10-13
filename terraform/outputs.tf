@@ -17,3 +17,8 @@ output "environment" {
   description = "Current deployment environment"
   value       = var.environment
 }
+
+output "application_url" {
+  description = "Public URL of the Student Task Management application"
+  value       = "https://${cloudflare_workers_script.task_manager.name}.${var.workers_subdomain}.workers.dev"
+}
