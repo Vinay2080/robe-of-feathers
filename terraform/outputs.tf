@@ -1,6 +1,6 @@
 output "worker_name" {
   description = "Name of the deployed Cloudflare Worker"
-  value       = cloudflare_worker_script.task_manager.name
+  value       = cloudflare_workers_script.task_manager.name
 }
 
 output "kv_namespace_id" {

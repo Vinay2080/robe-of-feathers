@@ -5,7 +5,7 @@ resource "cloudflare_workers_kv_namespace" "tasks_kv" {
 }
 
 # 2. Cloudflare Worker Script with KV Namespace binding
-resource "cloudflare_worker_script" "task_manager" {
+resource "cloudflare_workers_script" "task_manager" {
   account_id         = var.cloudflare_account_id
   name               = "${var.worker_name}-${var.environment}"
   content            = file("${path.module}/../application/worker.js")
