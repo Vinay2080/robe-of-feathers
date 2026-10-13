@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <h1>🎓 Student Task Manager</h1>
+        <p class="subtitle">Automated Serverless Infrastructure via Terraform on Cloudflare Workers &amp; KV</p>
+      </div>
+      <div class="stats-bar" id="statsBar">
+        <div class="stat-pill">Total: <span id="statTotal">0</span></div>
+        <div class="stat-pill pending">Pending: <span id="statPending">0</span></div>
+        <div class="stat-pill completed">Completed: <span id="statCompleted">0</span></div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- Create Task Card -->
+      <section class="card form-card">
+        <h2>➕ Create New Task</h2>
+        <form id="taskForm">
+          <div class="form-group">
+            <label for="taskTitle">Task Title</label>
+            <input type="text" id="taskTitle" placeholder="e.g. Complete Cloud Computing Assignment" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="taskStatus">Status</label>
+              <select id="taskStatus">
+                <option value="Pending" selected>Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Add Task</button>
+        </form>
+      </section>
+
+      <!-- Filter and Search -->
+      <section class="toolbar">
+        <input type="text" id="searchInput" placeholder="🔍 Search tasks by title or ID..." class="search-input">
+        <div class="filter-group">
+          <select id="filterPriority" class="filter-select">
+            <option value="ALL">All Priorities</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+          <select id="filterStatus" class="filter-select">
+            <option value="ALL">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Task List Card -->
+      <section class="card table-card">
+        <div class="card-header">
+          <h2>📋 Academic Tasks</h2>
+          <button class="btn btn-secondary btn-sm" id="refreshBtn">🔄 Refresh</button>
+        </div>
+        <div class="table-responsive">
+          <table class="task-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Task Title</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="taskTableBody">
+              <tr>
+                <td colspan="6" class="text-center text-muted">Loading tasks from Workers KV...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Mini Project: Infrastructure as Code (IaC) &bull; Cloudflare Workers &bull; Workers KV &bull; Terraform</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

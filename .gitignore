@@ -1,0 +1,23 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+*.tfvars
+!terraform.tfvars.example
+.terraform.lock.hcl
+
+# Environment variables & secrets
+.env
+*.pem
+*.key
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
