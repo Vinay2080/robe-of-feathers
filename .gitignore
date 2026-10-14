@@ -9,8 +9,12 @@
 
 # Environment variables & secrets
 .env
+.env.*
+!.env.example
 *.pem
 *.key
+*.token
+credentials.json
 
 # IDE & Editor files
 .idea/
